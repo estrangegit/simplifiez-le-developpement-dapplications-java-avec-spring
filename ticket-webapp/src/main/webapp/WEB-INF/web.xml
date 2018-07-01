@@ -5,4 +5,8 @@
          version="3.1">
 
     <display-name>Ticket</display-name>
+
+    <listener>
+        <listener-class>org.example.demo.ticket.webapp.listener.DependencyInjectionListener</listener-class>
+    </listener>
 </web-app>
