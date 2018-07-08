@@ -11,12 +11,12 @@ import javax.servlet.ServletContextListener;
 public class DependencyInjectionListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        ManagerFactoryImpl vManagerFactory = new ManagerFactoryImpl();
+        ManagerFactoryImpl vManagerFactoryImpl = new ManagerFactoryImpl();
 
-        vManagerFactory.setProjetManager(new ProjetManagerImpl());
-        vManagerFactory.setTicketManager(new TicketManagerImpl());
+        vManagerFactoryImpl.setProjetManager(new ProjetManagerImpl());
+        vManagerFactoryImpl.setTicketManager(new TicketManagerImpl());
 
-        AbstractResource.setManagerFactory(vManagerFactory);
+        AbstractResource.setManagerFactory(vManagerFactoryImpl);
     }
 
     @Override
