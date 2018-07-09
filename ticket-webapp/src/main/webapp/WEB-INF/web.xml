@@ -7,6 +7,10 @@
     <display-name>Ticket</display-name>
 
     <listener>
-        <listener-class>org.example.demo.ticket.webapp.listener.DependencyInjectionListener</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/applicationContext.xml</param-value>
+    </context-param>
 </web-app>

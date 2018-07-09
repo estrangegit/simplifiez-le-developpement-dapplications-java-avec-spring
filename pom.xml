@@ -44,6 +44,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jersey.version>2.26</jersey.version>
+        <spring.version>4.3.11.RELEASE</spring.version>
     </properties>
 
 
@@ -66,6 +67,13 @@
     <dependencyManagement>
         <dependencies>
             <!-- ===== Modules ===== -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>ticket-batch</artifactId>
