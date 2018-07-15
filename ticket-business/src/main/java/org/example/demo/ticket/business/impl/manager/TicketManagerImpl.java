@@ -8,9 +8,11 @@ import org.example.demo.ticket.model.bean.ticket.Ticket;
 import org.example.demo.ticket.model.exception.NotFoundException;
 import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
 
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
+@Named
 public class TicketManagerImpl implements TicketManager {
     @Override
     public Ticket getTicket(Long pNumero) throws NotFoundException {
