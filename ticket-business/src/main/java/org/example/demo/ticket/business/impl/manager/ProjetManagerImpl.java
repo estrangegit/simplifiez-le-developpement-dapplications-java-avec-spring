@@ -7,7 +7,7 @@ import org.example.demo.ticket.model.exception.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjetManagerImpl implements ProjetManager {
+public class ProjetManagerImpl extends AbstractManager implements ProjetManager {
     @Override
     public Projet getProjet(Integer pId) throws NotFoundException {
         // Je n'ai pas encore codé la DAO
