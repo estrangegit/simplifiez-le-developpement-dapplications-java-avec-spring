@@ -11,7 +11,7 @@ import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicketManagerImpl implements TicketManager {
+public class TicketManagerImpl extends AbstractManager implements TicketManager {
     @Override
     public Ticket getTicket(Long pNumero) throws NotFoundException {
         // Je n'ai pas encore codé la DAO

@@ -29,7 +29,7 @@ public class Main {
     public static void main(String[] pArgs) throws TechnicalException {
 
         ApplicationContext vApplicationContext
-                = new ClassPathXmlApplicationContext("classpath:/applicationContext.xml");
+                = new ClassPathXmlApplicationContext("classpath:/bootstrapContext.xml");
         ManagerFactory vManagerFactory
                 = vApplicationContext.getBean("managerFactory", ManagerFactory.class);
 
@@ -48,6 +48,6 @@ public class Main {
         } catch (Throwable vThrowable) {
             LOGGER.error(vThrowable);
             System.exit(1);
-        }
+       }
     }
 }
