@@ -12,11 +12,4 @@
     <context:annotation-config/>
     <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
     <context:component-scan base-package="org.example.demo.ticket"/>
-
-    <!-- ==== AbstractResource ===== -->
-    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetClass" value="org.example.demo.ticket.webapp.rest.resource.AbstractResource"/>
-        <property name="targetMethod" value="setManagerFactory"/>
-        <property name="arguments" ref="managerFactory"/>
-    </bean>
 </beans>

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-public class TicketManagerImpl implements TicketManager {
+public class TicketManagerImpl extends AbstractManager implements TicketManager {
     @Override
     public Ticket getTicket(Long pNumero) throws NotFoundException {
         // Je n'ai pas encore codé la DAO
@@ -48,11 +48,8 @@ public class TicketManagerImpl implements TicketManager {
         return vList;
     }
 
-
     @Override
     public int getCountTicket(RechercheTicket pRechercheTicket) {
-        // Je n'ai pas encore codé la DAO
-        // Je mets juste un code temporaire pour commencer le cours...
-        return 42;
+        return getDaoFactory().getTicketDao().getCountTicket(pRechercheTicket);
     }
 }

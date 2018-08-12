@@ -27,7 +27,6 @@ public interface TicketManager {
     /**
      * Renvoie le nombre de {@link Ticket} correspondants aux critères de recherche.
      *
-     * @param pRechercheTicket -
      * @return int
      */
     int getCountTicket(RechercheTicket pRechercheTicket);

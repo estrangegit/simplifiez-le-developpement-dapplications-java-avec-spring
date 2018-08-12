@@ -148,6 +148,7 @@
                 <artifactId>javax.ws.rs-api</artifactId>
                 <version>2.1</version>
             </dependency>
+
             <dependency>
                 <groupId>org.glassfish.jersey</groupId>
                 <artifactId>jersey-bom</artifactId>
@@ -156,22 +157,31 @@
                 <scope>import</scope>
             </dependency>
 
-
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
                 <version>1.2</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>2.6.2</version>
                 <scope>runtime</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-jcl</artifactId>
                 <version>2.6.2</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- Drivers JDBC PostgreSQL -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>9.4.1212</version>
                 <scope>runtime</scope>
             </dependency>
         </dependencies>

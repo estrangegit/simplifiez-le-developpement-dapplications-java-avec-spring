@@ -50,4 +50,14 @@ public class TicketResource extends AbstractResource {
                                                                     .setProjetId(pProjetId));
         return vList;
     }
+
+    /**
+     * Renvoie le nombre de tickets
+     *
+     */
+    @GET
+    @Path("count")
+    public String getCountTicket(@QueryParam("auteurId") Integer pAuteurId, @QueryParam("projetId") Integer pProjetId) {
+        return Integer.toString(getManagerFactory().getTicketManager().getCountTicket(new RechercheTicket().setProjetId(pProjetId).setAuteurId(pAuteurId)));
+    }
 }
