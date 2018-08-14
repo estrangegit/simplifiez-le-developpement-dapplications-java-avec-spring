@@ -1,6 +1,7 @@
 package org.example.demo.ticket.business.contract.manager;
 
 import org.example.demo.ticket.model.bean.ticket.Ticket;
+import org.example.demo.ticket.model.bean.ticket.TicketStatut;
 import org.example.demo.ticket.model.exception.NotFoundException;
 import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
 
@@ -30,4 +31,22 @@ public interface TicketManager {
      * @return int
      */
     int getCountTicket(RechercheTicket pRechercheTicket);
+
+    /**
+     * Renvoie la liste des statuts disponibles pour les tickets
+     * @return List
+     */
+    List<TicketStatut> getListStatut();
+
+    /**
+     * Permet de mettre à jour une entité TicketStatut
+     * @param ticketStatut
+     */
+    String updateTicketStatut(TicketStatut ticketStatut);
+
+    /**
+     * Permet l'insertion d'un nouveau TicketStatut en base de données
+     * @param pTicketStatut
+     */
+    void insertTicketStatut(TicketStatut pTicketStatut);
 }

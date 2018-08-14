@@ -5,6 +5,7 @@ import org.example.demo.ticket.model.bean.projet.Projet;
 import org.example.demo.ticket.model.bean.ticket.Bug;
 import org.example.demo.ticket.model.bean.ticket.Evolution;
 import org.example.demo.ticket.model.bean.ticket.Ticket;
+import org.example.demo.ticket.model.bean.ticket.TicketStatut;
 import org.example.demo.ticket.model.exception.NotFoundException;
 import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
 
@@ -51,5 +52,20 @@ public class TicketManagerImpl extends AbstractManager implements TicketManager 
     @Override
     public int getCountTicket(RechercheTicket pRechercheTicket) {
         return getDaoFactory().getTicketDao().getCountTicket(pRechercheTicket);
+    }
+
+    @Override
+    public List<TicketStatut> getListStatut() {
+        return getDaoFactory().getTicketDao().getListStatut();
+    }
+
+    @Override
+    public String updateTicketStatut(TicketStatut ticketStatut) {
+        return getDaoFactory().getTicketDao().updateTicketStatut(ticketStatut);
+    }
+
+    @Override
+    public void insertTicketStatut(TicketStatut pTicketStatut) {
+        getDaoFactory().getTicketDao().insertTicketStatut(pTicketStatut);
     }
 }
