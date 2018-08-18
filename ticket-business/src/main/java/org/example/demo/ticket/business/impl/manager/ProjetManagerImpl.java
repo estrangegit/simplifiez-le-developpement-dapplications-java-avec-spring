@@ -11,28 +11,13 @@ import java.util.List;
 @Named
 public class ProjetManagerImpl extends AbstractManager implements ProjetManager {
     @Override
-    public Projet getProjet(Integer pId) throws NotFoundException {
-        // Je n'ai pas encore codé la DAO
-        // Je mets juste un code temporaire pour commencer le cours...
-        if (pId < 1) {
-            throw new NotFoundException("Projet non trouvé : ID=" + pId);
-        }
-        Projet vProjet = new Projet(pId);
-        vProjet.setNom("Projet n°" + pId);
-        return vProjet;
+    public Projet getProjet(Integer pId){
+        return this.getDaoFactory().getProjetDao().getProjet(pId);
     }
 
 
     @Override
     public List<Projet> getListProjet() {
-        // Je n'ai pas encore codé la DAO
-        // Je mets juste un code temporaire pour commencer le cours...
-        List<Projet> vList = new ArrayList<>();
-        for (int vI = 0; vI < 9; vI++) {
-            Projet vProjet = new Projet(vI);
-            vProjet.setNom("Projet n°" + vI);
-            vList.add(vProjet);
-        }
-        return vList;
+        return this.getDaoFactory().getProjetDao().getListProjet();
     }
 }
