@@ -20,6 +20,8 @@ import javax.inject.Named;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Named
 public class TicketDaoImpl extends AbstractDaoImpl implements TicketDao {
@@ -250,4 +252,33 @@ public class TicketDaoImpl extends AbstractDaoImpl implements TicketDao {
         return vListTickets;
     }
 
+    @Override
+    public String changerStatut(Ticket pTicket, TicketStatut pTicketStatut) {
+        int vNbrLigneMaJ = 0;
+
+        Stream<TicketStatut> ticketStatutStream = this.getListStatut().stream();
+
+        Optional<TicketStatut> optionalTicketStatut = ticketStatutStream
+                .filter(ticketStatut -> ticketStatut.getId() == pTicketStatut.getId())
+                .findFirst();
+
+        if(optionalTicketStatut.isPresent()){
+            String vSQL = "UPDATE ticket" +
+                    " SET statut_actuel_id = :statut_actuel_id" +
+                    " WHERE numero = :numero";
+
+            MapSqlParameterSource vParams = new MapSqlParameterSource();
+
+            StringBuilder vSbSQL = new StringBuilder(vSQL);
+
+            vParams.addValue("statut_actuel_id", pTicketStatut.getId());
+            vParams.addValue("numero", pTicket.getNumero());
+
+            NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+            vNbrLigneMaJ = vJdbcTemplate.update(vSQL, vParams);
+        }
+
+        return "Mise à jour de " + vNbrLigneMaJ + " lignes.";
+    }
 }

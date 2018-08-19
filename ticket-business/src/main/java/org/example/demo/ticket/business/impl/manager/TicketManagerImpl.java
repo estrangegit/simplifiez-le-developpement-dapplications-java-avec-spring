@@ -2,10 +2,8 @@ package org.example.demo.ticket.business.impl.manager;
 
 import org.example.demo.ticket.business.contract.manager.TicketManager;
 import org.example.demo.ticket.model.bean.projet.Projet;
-import org.example.demo.ticket.model.bean.ticket.Bug;
-import org.example.demo.ticket.model.bean.ticket.Evolution;
-import org.example.demo.ticket.model.bean.ticket.Ticket;
-import org.example.demo.ticket.model.bean.ticket.TicketStatut;
+import org.example.demo.ticket.model.bean.ticket.*;
+import org.example.demo.ticket.model.bean.utilisateur.Utilisateur;
 import org.example.demo.ticket.model.exception.NotFoundException;
 import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
 
@@ -45,4 +43,10 @@ public class TicketManagerImpl extends AbstractManager implements TicketManager 
     public void insertTicketStatut(TicketStatut pTicketStatut) {
         getDaoFactory().getTicketDao().insertTicketStatut(pTicketStatut);
     }
+
+    @Override
+    public String changerStatut(Ticket pTicket, TicketStatut pNewStatut) {
+        return getDaoFactory().getTicketDao().changerStatut(pTicket, pNewStatut);
+    }
+
 }

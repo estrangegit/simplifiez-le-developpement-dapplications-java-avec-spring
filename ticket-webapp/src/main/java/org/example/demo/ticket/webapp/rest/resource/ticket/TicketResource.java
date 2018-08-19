@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import org.example.demo.ticket.model.bean.ticket.Bug;
 import org.example.demo.ticket.model.bean.ticket.Ticket;
 import org.example.demo.ticket.model.bean.ticket.TicketStatut;
 import org.example.demo.ticket.model.exception.NotFoundException;
@@ -89,5 +90,16 @@ public class TicketResource extends AbstractResource {
         tckst.setLibelle(libelle);
 
         getManagerFactory().getTicketManager().insertTicketStatut(tckst);
+    }
+
+    @PUT
+    @Path("changerStatut/{id_ticket}/{id_ticketStatut}")
+    public String changerStatut(@PathParam("id_ticket") Long id_ticket, @PathParam("id_ticketStatut") Integer id_ticketStatut) {
+
+        TicketStatut ticketStatut = new TicketStatut(id_ticketStatut);
+        Ticket ticket = new Bug();
+        ticket.setNumero(id_ticket);
+
+        return getManagerFactory().getTicketManager().changerStatut(ticket, ticketStatut);
     }
 }

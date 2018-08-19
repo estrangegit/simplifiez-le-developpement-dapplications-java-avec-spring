@@ -13,4 +13,5 @@ public interface TicketDao {
     public void insertTicketStatut(TicketStatut pTicketStatut);
     public Ticket getTicket(Long pNumero);
     public List<Ticket> getListTicket(RechercheTicket pRechercheTicket);
+    public String changerStatut(Ticket pTicket, TicketStatut pTicketStatut);
 }
