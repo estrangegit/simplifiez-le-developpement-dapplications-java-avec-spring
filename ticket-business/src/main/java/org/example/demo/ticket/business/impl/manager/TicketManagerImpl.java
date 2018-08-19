@@ -7,6 +7,7 @@ import org.example.demo.ticket.model.bean.utilisateur.Utilisateur;
 import org.example.demo.ticket.model.exception.NotFoundException;
 import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -49,17 +50,23 @@ public class TicketManagerImpl extends AbstractManager implements TicketManager 
 
     @Override
     public String changerStatut(Ticket pTicket, TicketStatut pNewStatut) {
-        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
-        return vTransactionTemplate.execute(new TransactionCallback<String>() {
-            @Override
-            public String doInTransaction(TransactionStatus status){
-                return getDaoFactory().getTicketDao().changerStatut(pTicket, pNewStatut);
+        TransactionStatus vTransactionStatus =
+                getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+
+        String result;
+
+        try{
+            result = getDaoFactory().getTicketDao().changerStatut(pTicket, pNewStatut);
+
+            TransactionStatus vTScommit = vTransactionStatus;
+            vTransactionStatus = null;
+            getPlatformTransactionManager().commit(vTScommit);
+        }finally {
+            if(vTransactionStatus != null){
+                getPlatformTransactionManager().rollback(vTransactionStatus);
             }
-        });
-
-//          Exemple d'implémentation utilisant une lambda expression
-//        return vTransactionTemplate.execute((status) -> getDaoFactory().getTicketDao().changerStatut(pTicket, pNewStatut));
-
+        }
+        return result;
     }
 }
