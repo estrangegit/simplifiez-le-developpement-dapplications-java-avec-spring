@@ -92,12 +92,9 @@ public class ProjetDaoImpl extends AbstractDaoImpl implements ProjetDao {
 
         String result = "Aucune version n'a pu être ajoutée en base de données.";
 
-        try {
-            vJdbcTemplate.update(vSQL, vParams);
-            result =  "La version " + pVersion.getNumero() + " a été ajoutée pour le projet d'identifiant " + pVersion.getProjet().getId();
-        } catch (DuplicateKeyException vEx) {
-            LOGGER.error("La version " + pVersion.getNumero() + " existe déjà pour le projet " + pVersion.getProjet(), vEx);
-        }
+        vJdbcTemplate.update(vSQL, vParams);
+        result =  "La version " + pVersion.getNumero() + " a été ajoutée pour le projet d'identifiant " + pVersion.getProjet().getId();
+
         return result;
     }
 }
