@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.example.demo.ticket.model.bean.projet.Projet;
+import org.example.demo.ticket.model.bean.utilisateur.Utilisateur;
 import org.example.demo.ticket.model.exception.NotFoundException;
 import org.example.demo.ticket.webapp.rest.resource.AbstractResource;
 
@@ -32,9 +33,10 @@ public class ProjetResource extends AbstractResource {
     @Path("{id}")
     public Projet get(@PathParam("id") Integer pId) throws NotFoundException {
         Projet vProjet = getManagerFactory().getProjectManager().getProjet(pId);
+        Utilisateur vUtilisateur = getManagerFactory().getUtilisateurManager().getUtilisateur(vProjet.getResponsable().getId());
+        vProjet.setResponsable(vUtilisateur);
         return vProjet;
     }
-
 
     /**
      * Renvoie tous les {@link Projet}

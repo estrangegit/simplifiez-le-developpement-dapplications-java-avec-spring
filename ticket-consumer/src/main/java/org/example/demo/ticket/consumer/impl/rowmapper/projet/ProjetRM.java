@@ -18,8 +18,6 @@ public class ProjetRM implements RowMapper<Projet> {
 
         Utilisateur vRespondable = new Utilisateur();
         vRespondable.setId(pRS.getInt("uId"));
-        vRespondable.setNom(pRS.getString("uNom"));
-        vRespondable.setPrenom(pRS.getString("uPrenom"));
 
         vProjet.setResponsable(vRespondable);
 

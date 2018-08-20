@@ -3,6 +3,7 @@ package org.example.demo.ticket.business.impl;
 import org.example.demo.ticket.business.contract.ManagerFactory;
 import org.example.demo.ticket.business.contract.manager.ProjetManager;
 import org.example.demo.ticket.business.contract.manager.TicketManager;
+import org.example.demo.ticket.business.contract.manager.UtilisateurManager;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -34,5 +35,16 @@ public class ManagerFactoryImpl implements ManagerFactory{
     @Override
     public void setTicketManager(TicketManager ticketManager){
         this.ticketManager = ticketManager;
+    }
+
+    @Inject
+    private UtilisateurManager utilisateurManager;
+
+    @Override
+    public UtilisateurManager getUtilisateurManager(){return utilisateurManager;}
+
+    @Override
+    public void setUtilisateurManager(UtilisateurManager utilisateurManager) {
+        this.utilisateurManager = utilisateurManager;
     }
 }

@@ -11,7 +11,7 @@ public interface ProjetManager {
      *
      * @param pId l'identifiant du projet
      * @return Le {@link Projet}
-     * @throws NotFoundException Si le projet n'est pas trouvé
+     * @throws NotFoundException lorsque le projet n'a pas été touvé
      */
     Projet getProjet(Integer pId) throws NotFoundException;
 

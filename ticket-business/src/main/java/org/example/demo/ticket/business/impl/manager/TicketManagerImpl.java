@@ -18,7 +18,6 @@ public class TicketManagerImpl extends AbstractManager implements TicketManager 
         return getDaoFactory().getTicketDao().getTicket(pNumero);
     }
 
-
     @Override
     public List<Ticket> getListTicket(RechercheTicket pRechercheTicket) {
         return getDaoFactory().getTicketDao().getListTicket(pRechercheTicket);
