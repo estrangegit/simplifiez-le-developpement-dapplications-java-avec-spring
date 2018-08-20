@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="
-            http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
         <!-- Chargement du fichier properties contenant
             la configuration de la datasource vers DB_TICKET  -->
         <bean id="dataSourceTicketConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-            <property name="location" value="file:${application.home}/conf/db-ticket.properties"/>
+            <property name="location" value="file:${application.ticket-batch.data}/conf/db-ticket.properties"/>
+        </bean>
+
+    <!-- Chargement du fichier properties contenant
+        la configuration nécessaire à l'export des statuts  -->
+        <bean id="ticketStatutConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+            <property name="location" value="file:${application.ticket-batch.data}/conf/config.properties"/>
         </bean>
 
         <!-- Création de la datasource "dataSourceTicket" -->
