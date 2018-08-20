@@ -90,11 +90,7 @@ public class ProjetDaoImpl extends AbstractDaoImpl implements ProjetDao {
         vParams.addValue("projet_id", pVersion.getProjet().getId());
         vParams.addValue("numero", pVersion.getNumero());
 
-        String result = "Aucune version n'a pu être ajoutée en base de données.";
-
         vJdbcTemplate.update(vSQL, vParams);
-        result =  "La version " + pVersion.getNumero() + " a été ajoutée pour le projet d'identifiant " + pVersion.getProjet().getId();
-
-        return result;
+        return  "La version " + pVersion.getNumero() + " a été ajoutée pour le projet d'identifiant " + pVersion.getProjet().getId();
     }
 }
