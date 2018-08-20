@@ -44,8 +44,13 @@ public class ProjetResource extends AbstractResource {
      * @return List
      */
     @GET
-    public List<Projet> get() {
+    public List<Projet> get() throws NotFoundException{
         List<Projet> vListProjet = getManagerFactory().getProjectManager().getListProjet();
+
+        for(Projet vProjet: vListProjet){
+            Utilisateur vUtilisateur = getManagerFactory().getUtilisateurManager().getUtilisateur(vProjet.getResponsable().getId());
+            vProjet.setResponsable(vUtilisateur);
+        }
         return vListProjet;
     }
 }
