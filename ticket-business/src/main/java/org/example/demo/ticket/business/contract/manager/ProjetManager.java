@@ -1,6 +1,7 @@
 package org.example.demo.ticket.business.contract.manager;
 
 import org.example.demo.ticket.model.bean.projet.Projet;
+import org.example.demo.ticket.model.bean.projet.Version;
 import org.example.demo.ticket.model.exception.NotFoundException;
 
 import java.util.List;
@@ -13,12 +14,18 @@ public interface ProjetManager {
      * @return Le {@link Projet}
      * @throws NotFoundException lorsque le projet n'a pas été touvé
      */
-    Projet getProjet(Integer pId) throws NotFoundException;
+    public Projet getProjet(Integer pId) throws NotFoundException;
 
     /**
      * Renvoie la liste des {@link Projet}
      *
-     * @return List
+     * @return Liste de projet présents en base de données
      */
-    List<Projet> getListProjet();
+    public List<Projet> getListProjet();
+
+    /**
+     *
+     * @param pVersion
+     */
+    public String insertVersion(Version pVersion);
 }

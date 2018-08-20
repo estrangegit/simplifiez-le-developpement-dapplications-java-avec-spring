@@ -75,6 +75,7 @@ public class TicketDaoImpl extends AbstractDaoImpl implements TicketDao {
         return "Mise à jour de " + vNbrLigneMaJ + " lignes.";
     }
 
+    @Override
     public void insertTicketStatut(TicketStatut pTicketStatut) {
         String vSQL = "INSERT INTO statut (id, libelle) VALUES (:id, :libelle)";
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
